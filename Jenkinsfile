@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:22.11.0-alpine3.20'
+            args '-u root'
+        }
+    }
 
     options {
         skipDefaultCheckout(true) // Skip the default checkout
@@ -19,13 +24,6 @@ pipeline {
         }
 
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:22.11.0-alpine3.20'
-                    args '-u root'
-                    reuseNode true // Reuse the node for the next stages
-                }
-            }
 
             steps {
 
