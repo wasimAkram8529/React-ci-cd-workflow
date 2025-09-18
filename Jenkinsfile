@@ -1,4 +1,5 @@
 pipeline{
+  // agent any
   agent{
      docker {
       image 'node:22.11.0-alpine3.20'
@@ -6,7 +7,6 @@ pipeline{
       reuseNode true
     }
   }
-  agent any
 
   options{
     skipDefaultCheckout(true)
