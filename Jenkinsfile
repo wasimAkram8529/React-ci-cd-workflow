@@ -26,8 +26,6 @@ pipeline{
           ls -l
           node --version
           npm --version
-          which node
-          which npm
           npm install
           npm run build
           ls -l
