@@ -45,3 +45,9 @@ jobs:
 
       - name: build
         run: echo "Build of project completed"
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: build
