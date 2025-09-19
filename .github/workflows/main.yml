@@ -1,0 +1,47 @@
+name: React CI CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - test
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - closed
+
+jobs:
+  build_pipeline:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: setup node environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.0
+          cache: npm
+
+      - name: install dependencies
+        run: |
+             ls -l
+             node --version
+             npm --version
+             npm install
+             ls -l
+
+      - name: build project
+        run: |
+             echo "Build process started..."
+             ls -l
+             npm run build
+
+      - name: run test
+        run: echo "Testing of project started..."
+
+      - name: build
+        run: echo "Build of project completed"
