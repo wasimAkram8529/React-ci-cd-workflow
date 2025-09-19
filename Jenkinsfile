@@ -52,7 +52,7 @@ pipeline {
             steps{
                 sh '''
                    echo "Project deployment started..."
-                   echo "Project deployment ended..."
+                   echo "Project deployment ended...."
                 '''
             }
         }
