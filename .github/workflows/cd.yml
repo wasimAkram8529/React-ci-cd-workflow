@@ -32,5 +32,5 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Deploy to vercel
-        run: vercel --prod --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }} --name=reactcicdworkflow
+        run: vercel --prod --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }} --confirm --name=reactcicdproject
 
