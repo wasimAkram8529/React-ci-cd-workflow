@@ -23,6 +23,9 @@ pipeline {
             steps {
 
                     sh '''
+                        rm -rf node_modules
+                        rm -f package-lock.json
+                        
                         ls -l
                         node --version
                         npm --version
