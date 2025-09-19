@@ -10,6 +10,7 @@ pipeline {
     // options {
     //     skipDefaultCheckout(true) // Skip the default checkout
     // }
+
     stages {
 
         // stage('Checkout using SCM') {
@@ -25,7 +26,7 @@ pipeline {
                     sh '''
                         rm -rf node_modules
                         rm -f package-lock.json
-                        
+
                         ls -l
                         node --version
                         npm --version
@@ -36,11 +37,12 @@ pipeline {
                 
             }
         }
-
-        stage ('Clean up code') {
-            steps {
-                cleanWs()
-            }   
+    }
+    
+    post {
+        always {
+            echo "Final cleanup..."
+            cleanWs() // safe now, deploy has already used the build
         }
     }
 }
