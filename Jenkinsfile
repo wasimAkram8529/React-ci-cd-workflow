@@ -21,21 +21,19 @@ pipeline {
         }
 
         stage('Build') {
-
             steps {
+                sh '''
+                    rm -rf node_modules
+                    rm -f package-lock.json
 
-                    sh '''
-                        rm -rf node_modules
-                        rm -f package-lock.json
-
-                        ls -l
-                        node --version
-                        npm --version
-                        npm install
-                        npm run build
-                        ls -l
-                    '''
-                
+                    ls -l
+                    node --version
+                    npm --version
+                    npm install
+                    npm run build
+                    ls -l
+                '''
+            
             }
         }
 
@@ -48,7 +46,7 @@ pipeline {
             }
         }
 
-        stage('Build'){
+        stage('Deploy'){
             steps{
                 sh '''
                    echo "Project deployment started..."
