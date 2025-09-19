@@ -7,6 +7,11 @@ pipeline {
         }
     }
 
+    enviroment{
+        NODE_ENV = 'test'
+        VERCEL_TOKEN = credentials(VERCEL_TOKEN)
+    }
+
     options {
         skipDefaultCheckout(true) // Skip the default checkout
     }
@@ -56,7 +61,9 @@ pipeline {
             steps{
                 sh '''
                    echo "Project deployment started..."
-                   echo "Project deployment ended...."
+                   npm install -g vercel
+                   vercel --
+                   echo $VERCEL_TOKEN
                 '''
             }
         }
