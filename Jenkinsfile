@@ -62,7 +62,7 @@ pipeline {
                 sh '''
                    echo "Project deployment started..."
                    npm install -g vercel
-                   vercel --
+                   vercel --version
                    echo $VERCEL_TOKEN
                 '''
             }
