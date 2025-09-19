@@ -13,11 +13,6 @@ pipeline {
                 '''
             }
         }
-        // stage('Clean Workspace') {
-        //     steps {
-        //         cleanWs() // always start fresh
-        //     }
-        // }
 
         stage('Checkout using SCM') {
             steps {
@@ -41,6 +36,24 @@ pipeline {
                         ls -l
                     '''
                 
+            }
+        }
+
+        stage("Test"){
+            steps{
+                sh '''
+                  echo "Testing started...."
+                  echo "Testing Ended......"
+                '''
+            }
+        }
+
+        stage('Build'){
+            steps{
+                sh '''
+                   echo "Project deployment started..."
+                   echo "Project deployment ended..."
+                '''
             }
         }
     }
