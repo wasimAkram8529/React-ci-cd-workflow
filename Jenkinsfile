@@ -7,17 +7,17 @@ pipeline {
         }
     }
 
-    // options {
-    //     skipDefaultCheckout(true) // Skip the default checkout
-    // }
+    options {
+        skipDefaultCheckout(true) // Skip the default checkout
+    }
 
     stages {
 
-        // stage('Checkout using SCM') {
-        //     steps {
-        //         checkout scm // Checkout the code
-        //     }
-        // }
+        stage('Checkout using SCM') {
+            steps {
+                checkout scm // Checkout the code
+            }
+        }
 
         stage('Build') {
 
@@ -38,7 +38,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             echo "Final cleanup..."
