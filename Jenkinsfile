@@ -9,7 +9,7 @@ pipeline {
 
     environment{
         NODE_ENV = 'test'
-        VERCEL_TOKEN = credentials(VERCEL_TOKEN)
+        VERCEL_TOKEN = credentials('VERCEL_TOKEN')
     }
 
     options {
