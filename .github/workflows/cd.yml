@@ -11,6 +11,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Setup node environment
@@ -23,6 +24,13 @@ jobs:
              npm install -g vercel
              vercel --version
 
-      # - name: download build file
-      #   uses: 
+      - name: download build file
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Deploy to vercel
+        run: vercel --prod --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }} --name=reactcicdworkflow
 
