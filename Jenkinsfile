@@ -63,7 +63,7 @@ pipeline {
                    echo "Project deployment started..."
                    npm install -g vercel
                    vercel --version
-                   echo $VERCEL_TOKEN
+                   vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=reactcicdproject
                 '''
             }
         }
