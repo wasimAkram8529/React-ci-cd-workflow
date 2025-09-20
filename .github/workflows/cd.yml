@@ -14,24 +14,23 @@ jobs:
     environment: production
 
     steps:
-      - name: Setup node environment
+      - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 22.0
-        
-      - name: Setup vercel cli
-        run: |
-             npm install -g vercel
-             vercel --version
 
-      - name: download build file
+      - name: Install Vercel CLI
+        run: |
+          npm install -g vercel
+          vercel --version
+
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: build
+          path: build   # ✅ ensures artifact goes into ./build
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
       - name: Deploy to Vercel
         run: vercel deploy ./build --prod --yes --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }}
-
-
