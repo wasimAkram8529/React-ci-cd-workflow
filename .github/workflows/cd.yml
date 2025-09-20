@@ -28,10 +28,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-          path: build
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
-      - name: Deploy to vercel
-        run: vercel deploy --prebuilt build --prod --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }} --confirm --name=reactcicdproject
+      - name: Deploy to Vercel
+        run: vercel deploy ./build --prod --yes --token=${{ secrets.ACTIONS_GITHUB_VERCEL_TOKEN }}
+
 
